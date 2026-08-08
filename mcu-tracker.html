@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="MCU Tracker">
+<meta name="theme-color" content="#0A0E1C">
+<title>MCU Watch Tracker &middot; Road to Doomsday</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+  /* ── palette ─────────────────────────────────────────────────────────── */
+  :root{
+    --bg:#F4F6FB; --surface:#FFFFFF; --surface-2:#EDF1F8; --line:#DBE2EF;
+    --ink:#141A28; --muted:#57647F; --dim:#8390AB;
+    --essential:#0D8A53; --essential-tint:rgba(13,138,83,.11);
+    --important:#9C5F0D; --important-tint:rgba(156,95,13,.11);
+    --required:#1B5AC9;  --required-tint:rgba(27,90,201,.11);
+    --upcoming:#6733C4;  --upcoming-tint:rgba(103,51,196,.11);
+    --ring:#1B5AC9;
+    --meter-track:#DDE4F0;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0A0E1C; --surface:#121A2E; --surface-2:#16203A; --line:#1F2A44;
+      --ink:#E6ECF7; --muted:#8A97B4; --dim:#63708F;
+      --essential:#3FD68C; --essential-tint:rgba(63,214,140,.13);
+      --important:#E9A94A; --important-tint:rgba(233,169,74,.13);
+      --required:#4C8FF7;  --required-tint:rgba(76,143,247,.13);
+      --upcoming:#A175F5;  --upcoming-tint:rgba(161,117,245,.13);
+      --ring:#4C8FF7;
+      --meter-track:#1C2740;
+    }
+  }
+  :root[data-theme="light"]{
+    --bg:#F4F6FB; --surface:#FFFFFF; --surface-2:#EDF1F8; --line:#DBE2EF;
+    --ink:#141A28; --muted:#57647F; --dim:#8390AB;
+    --essential:#0D8A53; --essential-tint:rgba(13,138,83,.11);
+    --important:#9C5F0D; --important-tint:rgba(156,95,13,.11);
+    --required:#1B5AC9;  --required-tint:rgba(27,90,201,.11);
+    --upcoming:#6733C4;  --upcoming-tint:rgba(103,51,196,.11);
+    --ring:#1B5AC9;
+    --meter-track:#DDE4F0;
+  }
+  :root[data-theme="dark"]{
+    --bg:#0A0E1C; --surface:#121A2E; --surface-2:#16203A; --line:#1F2A44;
+    --ink:#E6ECF7; --muted:#8A97B4; --dim:#63708F;
+    --essential:#3FD68C; --essential-tint:rgba(63,214,140,.13);
+    --important:#E9A94A; --important-tint:rgba(233,169,74,.13);
+    --required:#4C8FF7;  --required-tint:rgba(76,143,247,.13);
+    --upcoming:#A175F5;  --upcoming-tint:rgba(161,117,245,.13);
+    --ring:#4C8FF7;
+    --meter-track:#1C2740;
+  }
+
+  /* ── base ────────────────────────────────────────────────────────────── */
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%}
+  body{
+    margin:0; min-height:100dvh; background:var(--bg); color:var(--ink);
+    font-family:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,"Helvetica Neue",Arial,sans-serif;
+    font-size:16px; line-height:1.45;
+    -webkit-font-smoothing:antialiased;
+    overscroll-behavior-y:contain;
+    -webkit-tap-highlight-color:transparent;
+  }
+  :focus-visible{outline:2px solid var(--ring); outline-offset:2px; border-radius:4px}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 max(14px, env(safe-area-inset-left)) 0 max(14px, env(safe-area-inset-right))}
+
+  /* ── header ──────────────────────────────────────────────────────────── */
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--surface); border-bottom:1px solid var(--line);
+    padding-top:env(safe-area-inset-top);
+  }
+  .hd{display:flex; align-items:flex-start; gap:12px; padding:12px 0 10px}
+  .brand{flex:1 1 auto; min-width:0}
+  .kicker{
+    font-size:10px; font-weight:700; letter-spacing:.18em; text-transform:uppercase;
+    color:var(--dim); margin:0 0 2px;
+  }
+  h1{
+    margin:0; font-size:clamp(19px,5.2vw,26px); font-weight:800;
+    letter-spacing:.055em; text-transform:uppercase; line-height:1.1; text-wrap:balance;
+  }
+  h1 .thin{font-weight:400; color:var(--muted); letter-spacing:.11em; display:block; font-size:.5em; margin-top:4px}
+  .hd-actions{display:flex; gap:6px; flex:0 0 auto}
+  .btn{
+    -webkit-appearance:none; appearance:none; cursor:pointer;
+    background:var(--surface-2); color:var(--muted);
+    border:1px solid var(--line); border-radius:8px;
+    font:inherit; font-size:11px; font-weight:700; letter-spacing:.07em; text-transform:uppercase;
+    padding:0 10px; min-height:34px; white-space:nowrap;
+  }
+  .btn:active{background:var(--line); color:var(--ink)}
+
+  /* progress */
+  .prog{padding-bottom:12px; display:flex; flex-direction:column; gap:7px}
+  .prog-top{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap}
+  .prog-count{font-size:22px; font-weight:800; letter-spacing:-.01em; font-variant-numeric:tabular-nums}
+  .prog-count b{color:var(--essential)}
+  .prog-of{font-size:12px; color:var(--muted); letter-spacing:.05em; text-transform:uppercase; font-weight:600}
+  .prog-split{margin-left:auto; font-size:11px; color:var(--dim); font-variant-numeric:tabular-nums; letter-spacing:.03em}
+  .meter{height:6px; border-radius:99px; background:var(--meter-track); overflow:hidden}
+  .meter i{display:block; height:100%; width:0; background:var(--essential); border-radius:99px; transition:width .35s ease}
+
+  .nextup{
+    display:flex; align-items:center; gap:9px;
+    border:1px solid var(--line); border-left:3px solid var(--essential);
+    background:var(--surface-2); border-radius:8px; padding:8px 11px;
+  }
+  .nextup .lbl{font-size:9.5px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--dim); flex:0 0 auto}
+  .nextup .val{font-size:14px; font-weight:650; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+  .nextup .val span{color:var(--muted); font-weight:400; font-variant-numeric:tabular-nums}
+
+  .notice{
+    font-size:12px; line-height:1.4; color:var(--important);
+    background:var(--important-tint); border:1px solid var(--line);
+    border-radius:8px; padding:8px 11px; margin-bottom:12px;
+  }
+
+  /* ── sagas ───────────────────────────────────────────────────────────── */
+  .sagas{display:grid; gap:26px; padding:20px 0 8px}
+  @media (min-width:900px){ .sagas{grid-template-columns:1fr 1fr; gap:22px; align-items:start} }
+
+  .saga-hd{
+    display:flex; align-items:baseline; gap:10px;
+    border-bottom:2px solid var(--ink); padding-bottom:7px; margin-bottom:10px;
+  }
+  .saga-hd h2{
+    margin:0; font-size:12.5px; font-weight:800; letter-spacing:.13em;
+    text-transform:uppercase; line-height:1.3;
+  }
+  .saga-hd .tally{
+    margin-left:auto; flex:0 0 auto; font-size:11px; font-weight:700;
+    color:var(--muted); font-variant-numeric:tabular-nums; letter-spacing:.04em;
+  }
+
+  ul.list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px}
+
+  /* ── row ─────────────────────────────────────────────────────────────── */
+  .row{
+    background:var(--surface); border:1px solid var(--line); border-radius:10px;
+    border-left:3px solid var(--c);
+  }
+  .row[data-status="essential"]{--c:var(--essential); --ct:var(--essential-tint)}
+  .row[data-status="important"]{--c:var(--important); --ct:var(--important-tint)}
+  .row[data-status="required"] {--c:var(--required);  --ct:var(--required-tint)}
+  .row[data-status="upcoming"] {--c:var(--upcoming);  --ct:var(--upcoming-tint)}
+
+  .row-head{display:flex; align-items:stretch}
+
+  .check{
+    flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+    width:46px; min-height:52px; cursor:pointer;
+  }
+  .check input{
+    -webkit-appearance:none; appearance:none; margin:0; cursor:pointer;
+    width:21px; height:21px; border-radius:6px;
+    border:2px solid var(--dim); background:transparent;
+    display:grid; place-content:center; transition:background .12s, border-color .12s;
+  }
+  .check input::after{
+    content:""; width:11px; height:11px; transform:scale(0);
+    background:var(--surface); transition:transform .12s ease;
+    clip-path:polygon(14% 47%,0 61%,38% 100%,100% 22%,86% 8%,38% 71%);
+  }
+  .check input:checked{background:var(--essential); border-color:var(--essential)}
+  .check input:checked::after{transform:scale(1)}
+  .check:active input{border-color:var(--essential)}
+
+  .row-btn{
+    -webkit-appearance:none; appearance:none; background:none; border:0;
+    font:inherit; color:inherit; text-align:left; cursor:pointer;
+    flex:1 1 auto; min-width:0; min-height:52px; padding:8px 11px 8px 0;
+    display:grid; column-gap:9px; row-gap:2px; align-items:center;
+    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-areas:"num title caret" "num meta caret";
+  }
+  @media (min-width:620px){
+    .row-btn{
+      grid-template-columns:auto minmax(0,1fr) auto auto;
+      grid-template-areas:"num title meta caret";
+    }
+  }
+  .num{
+    grid-area:num; font-size:11px; font-weight:700; color:var(--dim);
+    font-variant-numeric:tabular-nums; letter-spacing:.02em; align-self:center;
+  }
+  .title{grid-area:title; font-size:15px; font-weight:600; line-height:1.25; min-width:0}
+  .tag{
+    display:inline-block; vertical-align:1px; margin-left:6px;
+    font-size:8.5px; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+    color:var(--dim); border:1px solid var(--line); border-radius:4px; padding:1px 4px;
+  }
+  .meta{grid-area:meta; display:flex; align-items:center; gap:8px; min-width:0}
+  @media (min-width:620px){ .meta{justify-content:flex-end} }
+  .year{font-size:12px; color:var(--muted); font-variant-numeric:tabular-nums; letter-spacing:.02em; flex:0 0 auto}
+  .chip{
+    flex:0 0 auto; font-size:9px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--c); background:var(--ct); border:1px solid var(--c);
+    border-radius:4px; padding:2px 6px; white-space:nowrap;
+  }
+  .caret{
+    grid-area:caret; align-self:center; width:9px; height:9px; margin-left:2px;
+    border-right:2px solid var(--dim); border-bottom:2px solid var(--dim);
+    transform:rotate(45deg) translate(-2px,-2px); transition:transform .2s ease;
+  }
+  .row.open .caret{transform:rotate(-135deg) translate(-3px,-3px)}
+
+  /* watched state: colour drains out */
+  .row.done{background:var(--bg); border-left-color:var(--line)}
+  .row.done .title{color:var(--dim); text-decoration:line-through; text-decoration-thickness:1px; font-weight:500}
+  .row.done .chip{color:var(--dim); background:transparent; border-color:var(--line)}
+  .row.done .year,.row.done .num,.row.done .tag{color:var(--dim); opacity:.75}
+
+  /* ── detail ──────────────────────────────────────────────────────────── */
+  .detail{
+    max-height:0; overflow:hidden; visibility:hidden;
+    transition:max-height .28s ease, visibility 0s linear .28s;
+  }
+  .row.open .detail{max-height:44rem; visibility:visible; transition:max-height .28s ease, visibility 0s}
+  .detail-in{padding:2px 13px 13px 46px; display:flex; flex-direction:column; gap:10px}
+  .fact{border-top:1px solid var(--line); padding-top:9px}
+  .fact dt{
+    font-size:9px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--c); margin-bottom:3px;
+  }
+  .fact dd{margin:0; font-size:13.5px; line-height:1.5; color:var(--muted); max-width:62ch}
+
+  /* ── footer ──────────────────────────────────────────────────────────── */
+  footer{
+    border-top:1px solid var(--line); margin-top:24px;
+    padding:20px 0 calc(28px + env(safe-area-inset-bottom));
+  }
+  footer h3{margin:0 0 10px; font-size:11px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--dim)}
+  footer ul{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:9px}
+  footer li{font-size:13px; line-height:1.5; color:var(--muted); max-width:70ch}
+  footer li b{color:var(--ink); font-weight:650}
+  .colophon{margin-top:18px; font-size:11.5px; line-height:1.5; color:var(--dim); max-width:70ch}
+
+  @media (prefers-reduced-motion:reduce){
+    *,*::after{transition:none !important; animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="hd">
+      <div class="brand">
+        <p class="kicker">Marvel Studios &middot; Release Order</p>
+        <h1>The Complete Watch Guide<span class="thin">Road to Avengers: Doomsday</span></h1>
+      </div>
+      <div class="hd-actions">
+        <button class="btn" id="theme" type="button" title="Switch theme">Auto</button>
+        <button class="btn" id="reset" type="button">Reset</button>
+      </div>
+    </div>
+
+    <div class="prog">
+      <div class="prog-top">
+        <span class="prog-count"><b id="done">0</b> / 47</span>
+        <span class="prog-of">watched</span>
+        <span class="prog-split" id="split">Infinity 0/23 &middot; Multiverse 0/24</span>
+      </div>
+      <div class="meter" role="progressbar" aria-valuemin="0" aria-valuemax="47" aria-valuenow="0" aria-label="Titles watched" id="bar"><i id="fill"></i></div>
+      <p class="nextup" id="nextup"><span class="lbl">Watch next</span><span class="val" id="nextval">&mdash;</span></p>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="notice" id="notice" hidden></p>
+
+  <div class="sagas">
+    <section>
+      <div class="saga-hd">
+        <h2>The Infinity Saga &middot; Phases 1&ndash;3</h2>
+        <span class="tally" id="tally-1">0/23</span>
+      </div>
+      <ul class="list" id="list-1"></ul>
+    </section>
+    <section>
+      <div class="saga-hd">
+        <h2>The Multiverse Saga &middot; Road to Doomsday</h2>
+        <span class="tally" id="tally-2">0/24</span>
+      </div>
+      <ul class="list" id="list-2"></ul>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">
+  <h3>Tips for the best watch experience</h3>
+  <ul>
+    <li><b>Watch in release order.</b> Experiencing the universe in release order ensures post-credits scenes and teases reveal lore at the intended pacing.</li>
+    <li><b>Stay until post-credit scenes.</b> Almost every Marvel entry contains one or two post-credits scenes that directly set up future titles.</li>
+    <li><b>Multiverse connections matter.</b> Pay extra attention to <i>Loki</i>, <i>Spider-Man: No Way Home</i>, <i>Multiverse of Madness</i>, <i>Deadpool &amp; Wolverine</i>, and <i>The Fantastic Four</i> &mdash; they directly set up Doctor Doom and the Incursions.</li>
+  </ul>
+  <p class="colophon" id="colophon">Progress is saved on this device only &mdash; checking a title here won&rsquo;t appear on your other devices. Tap any row to read why it matters and how it connects.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var DATA = [
+    {n:1,s:1,t:"Iron Man",y:"2008",k:"essential",why:"Introduces Tony Stark and the beginning of the MCU.",how:"Tony Stark kickstarts the Avengers Initiative."},
+    {n:2,s:1,t:"The Incredible Hulk",y:"2008",k:"essential",why:"Introduces Bruce Banner, the Hulk, and General Ross.",how:"Hulk's story continues and he becomes a core Avenger."},
+    {n:3,s:1,t:"Iron Man 2",y:"2010",k:"essential",why:"Expands Tony's world; introduces Natasha Romanoff and James Rhodes.",how:"Sets up future armor tech, S.H.I.E.L.D. depth, and Thor's hammer."},
+    {n:4,s:1,t:"Thor",y:"2011",k:"essential",why:"Introduces Thor, Loki, Asgard, and the Tesseract.",how:"Thor becomes a key Avenger; Space Stone introduced."},
+    {n:5,s:1,t:"Captain America: The First Avenger",y:"2011",k:"essential",why:"Steve Rogers' origin, Super Soldier Serum, and HYDRA.",how:"Sets up Steve's role, the Tesseract, and HYDRA's persistence."},
+    {n:6,s:1,t:"Marvel's The Avengers",y:"2012",k:"essential",why:"First team-up of Earth's Mightiest Heroes against Loki.",how:"Loki's invasion establishes the team and teases Thanos."},
+    {n:7,s:1,t:"Iron Man 3",y:"2013",k:"essential",why:"Tony faces post-New York trauma and Extremis tech.",how:"Drives Tony's obsession to build planetary defense (Ultron)."},
+    {n:8,s:1,t:"Thor: The Dark World",y:"2013",k:"essential",why:"Continues Thor's story and introduces the Aether.",how:"The Aether is revealed as the Reality Stone."},
+    {n:9,s:1,t:"Captain America: The Winter Soldier",y:"2014",k:"essential",why:"Steve uncovers HYDRA inside S.H.I.E.L.D. and finds Bucky.",how:"Major turning point that collapses S.H.I.E.L.D. and leads to Civil War."},
+    {n:10,s:1,t:"Guardians of the Galaxy",y:"2014",k:"essential",why:"Introduces the Guardians team and the cosmic side of the MCU.",how:"Features the Power Stone and Thanos' first major appearance."},
+    {n:11,s:1,t:"Avengers: Age of Ultron",y:"2015",k:"essential",why:"Avengers face AI Ultron; Vision and Wanda introduced.",how:"Vision born from Mind Stone; sets up civil tension."},
+    {n:12,s:1,t:"Ant-Man",y:"2015",k:"important",why:"Introduces Scott Lang, Pym Particles, and the Quantum Realm.",how:"Quantum tech becomes critical in the Endgame time heist."},
+    {n:13,s:1,t:"Captain America: Civil War",y:"2016",k:"essential",why:"Avengers split over Sokovia Accords; introduces Black Panther and Spidey.",how:"Fractures the team, leaving Earth vulnerable to Thanos."},
+    {n:14,s:1,t:"Doctor Strange",y:"2016",k:"essential",why:"Introduces sorcery, alternate dimensions, and Stephen Strange.",how:"Strange gains the Time Stone; opens gateway to multiversal magic."},
+    {n:15,s:1,t:"Guardians of the Galaxy Vol. 2",y:"2017",k:"important",why:"Explores Peter Quill's celestial lineage (Ego) and the team bond.",how:"Expands cosmic scope and sets up Infinity War dynamics."},
+    {n:16,s:1,t:"Spider-Man: Homecoming",y:"2017",k:"important",why:"Peter Parker's growth as a hero under Stark's guidance.",how:"Establishes Peter as Tony's protege and key future Avenger."},
+    {n:17,s:1,t:"Thor: Ragnarok",y:"2017",k:"essential",why:"Asgard destroyed; introduces Valkyrie, Korg, and planet Sakaar.",how:"Leads directly into the opening scene of Infinity War."},
+    {n:18,s:1,t:"Black Panther",y:"2018",k:"essential",why:"Introduces Wakanda, T'Challa, and Vibranium technology.",how:"Wakanda becomes the primary defense ground against Thanos."},
+    {n:19,s:1,t:"Avengers: Infinity War",y:"2018",k:"essential",why:"The Avengers fight Thanos to stop him collecting all the Stones.",how:"Thanos succeeds, wiping out half of all life in the universe."},
+    {n:20,s:1,t:"Ant-Man and the Wasp",y:"2018",k:"important",why:"Continues Scott's story and introduces Hope as the Wasp.",how:"Post-credits traps Scott in the Quantum Realm during the Snap."},
+    {n:21,s:1,t:"Captain Marvel",y:"2019",k:"essential",why:"1990s origin story of Carol Danvers and Nick Fury's initiative.",how:"Establishes cosmic hero crucial to turning the tide in Endgame."},
+    {n:22,s:1,t:"Avengers: Endgame",y:"2019",k:"essential",why:"The climax of the Infinity Saga; the Time Heist to defeat Thanos.",how:"Heroes reverse the snap, resetting the universe and closing Phase 3."},
+    {n:23,s:1,t:"Spider-Man: Far From Home",y:"2019",k:"important",why:"Peter copes with Tony's death and faces Mysterio's trickery.",how:"First teases the Multiverse concept; ends with Peter exposed."},
+
+    {n:24,s:2,t:"WandaVision",g:"Series",y:"2021",k:"important",why:"Explores Wanda's grief, hex reality, and transformation into Scarlet Witch.",how:"Wanda obtains the Darkhold, triggering Multiverse of Madness."},
+    {n:25,s:2,t:"The Falcon & Winter Soldier",g:"Series",y:"2021",k:"important",why:"Sam Wilson grapples with shield legacy and geopolitical tension.",how:"Sam officially becomes Captain America; sets up Brave New World."},
+    {n:26,s:2,t:"Loki",g:"Seasons 1 & 2",y:"2021–23",k:"essential",why:"Introduces the TVA, Sacred Timeline, Variants, and the multiversal tree.",how:"Officially unlocks the Multiverse rules essential for Doomsday."},
+    {n:27,s:2,t:"Black Widow",y:"2021",k:"important",why:"Natasha's past, the Red Room, and the introduction of Yelena Belova.",how:"Passes the mantle to Yelena, setting up Thunderbolts*."},
+    {n:28,s:2,t:"Shang-Chi & the Ten Rings",y:"2021",k:"important",why:"Introduces Shang-Chi, the Ta Lo realm, and ancient Ten Rings artifacts.",how:"The Ten Rings beacon signals ancient multiversal power."},
+    {n:29,s:2,t:"Eternals",y:"2021",k:"important",why:"Introduces the immortal Eternals, Celestials, and Earth's true creation.",how:"Leaves the giant dead Celestial Tiamut in the ocean (Adamantium source)."},
+    {n:30,s:2,t:"X-Men / Logan",g:"Fox Universe",y:"2000–17",k:"required",why:"Original Mutant timelines, Charles Xavier, and Wolverine's journey.",how:"Establishes Fox Universe characters returning in the Multiverse Saga."},
+    {n:31,s:2,t:"Spider-Man: No Way Home",y:"2021",k:"essential",why:"The multiverse spell breaks; brings Tobey, Andrew, and legacy villains.",how:"Proves cross-universe travel and resets Peter's identity."},
+    {n:32,s:2,t:"Doctor Strange in the Multiverse of Madness",y:"2022",k:"essential",why:"Strange travels alternate dimensions with America Chavez.",how:"Introduces Incursions (universe collisions) key to Doomsday."},
+    {n:33,s:2,t:"Ms. Marvel",g:"Series",y:"2022",k:"important",why:"Kamala Khan origin; reveals her mutant gene and quantum bangle.",how:"Connects to The Marvels and Young Avengers setup."},
+    {n:34,s:2,t:"Thor: Love and Thunder",y:"2022",k:"important",why:"Thor faces Gorr the God Butcher; Jane Foster becomes Mighty Thor.",how:"Expands pantheon lore and Thor's ongoing galactic journey."},
+    {n:35,s:2,t:"She-Hulk: Attorney at Law",g:"Series",y:"2022",k:"important",why:"Jennifer Walters' legal battles and street-level heroics.",how:"Features Daredevil and introduces superhuman legal status."},
+    {n:36,s:2,t:"Black Panther: Wakanda Forever",y:"2022",k:"essential",why:"Honors T'Challa; introduces Shuri as Panther and Namor of Talokan.",how:"Shifts international power struggle over global Vibranium."},
+    {n:37,s:2,t:"Ant-Man and the Wasp: Quantumania",y:"2023",k:"important",why:"Explores the sub-atomic Quantum Realm and multiversal exile concepts.",how:"Deepens the mechanics of non-linear multiversal space."},
+    {n:38,s:2,t:"Guardians of the Galaxy Vol. 3",y:"2023",k:"important",why:"Conclusion of the original Guardians team and Rocket's origin.",how:"Passes team leadership to Rocket for future cosmic events."},
+    {n:39,s:2,t:"The Marvels",y:"2023",k:"important",why:"Carol, Monica, and Kamala team up via quantum entanglement.",how:"Post-credits opens a rift to the Fox X-Men dimension (Beast)."},
+    {n:40,s:2,t:"Deadpool & Wolverine",y:"2024",k:"essential",why:"Brings Fox Mutants into the TVA ecosystem and MCU timeline.",how:"Major multiversal bridge uniting Mutants and Avengers."},
+    {n:41,s:2,t:"Agatha All Along",g:"Series",y:"2024",k:"important",why:"Explores the Witches' Road, magical lore, and Billy Maximoff (Wiccan).",how:"Sets up the magical faction and supernatural Avengers elements."},
+    {n:42,s:2,t:"Captain America: Brave New World",y:"2025",k:"essential",why:"Sam Wilson faces global crisis, Red Hulk, and Adamantium conflict.",how:"Establishes the new Captain America leading Earth's defenses."},
+    {n:43,s:2,t:"Daredevil: Born Again",g:"Series",y:"2025",k:"important",why:"Matt Murdock vs. Mayor Wilson Fisk in high-stakes NYC conflict.",how:"Anchors street-level vigilantes prior to multiversal collapse."},
+    {n:44,s:2,t:"The Fantastic Four: First Steps",y:"2025",k:"essential",why:"Origin of Marvel's First Family in a retro 1960s universe.",how:"Directly introduces Doctor Doom and the alternate dimension bridge."},
+    {n:45,s:2,t:"Thunderbolts*",y:"2025",k:"essential",why:"Anti-heroes (Yelena, Bucky, U.S. Agent) unite for dark ops.",how:"Forms a government-backed team in the main timeline."},
+    {n:46,s:2,t:"Spider-Man: Brand New Day",y:"2026",k:"essential",why:"A grounded Peter Parker in a world where no one remembers him.",how:"Positions Spider-Man on the doorstep of the Doomsday crisis."},
+    {n:47,s:2,t:"Avengers: Doomsday",y:"2026",k:"upcoming",why:"Doctor Doom threatens all realities across the collapsing Multiverse.",how:"The culmination event. All timelines and heroes collide."}
+  ];
+
+  var LABEL = {essential:"Essential", important:"Important", required:"Required Universe", upcoming:"Upcoming"};
+  var KEY = "mcu-tracker-v1", THEME_KEY = "mcu-tracker-theme";
+
+  /* ── storage: localStorage → sessionStorage → memory ─────────────────── */
+  var store = (function () {
+    function usable(s) {
+      try { var p = "__t"; s.setItem(p, "1"); s.removeItem(p); return true; }
+      catch (e) { return false; }
+    }
+    try { if (window.localStorage && usable(window.localStorage))
+      return {get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},
+              set:function(k,v){try{localStorage.setItem(k,v);}catch(e){}}, kind:"local"}; } catch (e) {}
+    try { if (window.sessionStorage && usable(window.sessionStorage))
+      return {get:function(k){try{return sessionStorage.getItem(k);}catch(e){return null;}},
+              set:function(k,v){try{sessionStorage.setItem(k,v);}catch(e){}}, kind:"session"}; } catch (e) {}
+    var mem = {};
+    return {get:function(k){return Object.prototype.hasOwnProperty.call(mem,k)?mem[k]:null;},
+            set:function(k,v){mem[k]=v;}, kind:"memory"};
+  })();
+
+  var watched = (function () {
+    try {
+      var raw = store.get(KEY);
+      if (!raw) return {};
+      var arr = JSON.parse(raw), out = {}, i;
+      if (Object.prototype.toString.call(arr) !== "[object Array]") return {};
+      for (i = 0; i < arr.length; i++) out[arr[i]] = true;
+      return out;
+    } catch (e) { return {}; }
+  })();
+
+  function save() {
+    var arr = [], i;
+    for (i = 0; i < DATA.length; i++) if (watched[DATA[i].n]) arr.push(DATA[i].n);
+    store.set(KEY, JSON.stringify(arr));
+  }
+
+  /* ── render ──────────────────────────────────────────────────────────── */
+  function esc(s) {
+    return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+  }
+
+  function rowHTML(d) {
+    var pad = d.n < 10 ? "0" + d.n : String(d.n);
+    var on = !!watched[d.n];
+    return '<li class="row' + (on ? " done" : "") + '" data-status="' + d.k + '" data-n="' + d.n + '">' +
+      '<div class="row-head">' +
+        '<label class="check"><input type="checkbox"' + (on ? " checked" : "") +
+          ' aria-label="Mark ' + esc(d.t) + ' as watched"></label>' +
+        '<button class="row-btn" type="button" aria-expanded="false" aria-controls="d' + d.n + '">' +
+          '<span class="num">' + pad + '</span>' +
+          '<span class="title">' + esc(d.t) +
+            (d.g ? '<span class="tag">' + esc(d.g) + '</span>' : "") + '</span>' +
+          '<span class="meta"><span class="year">' + esc(d.y) + '</span>' +
+            '<span class="chip">' + LABEL[d.k] + '</span></span>' +
+          '<span class="caret" aria-hidden="true"></span>' +
+        '</button>' +
+      '</div>' +
+      '<div class="detail" id="d' + d.n + '"><div class="detail-in">' +
+        '<dl class="fact"><dt>Why it matters</dt><dd>' + esc(d.why) + '</dd></dl>' +
+        '<dl class="fact"><dt>How it connects</dt><dd>' + esc(d.how) + '</dd></dl>' +
+      '</div></div>' +
+    '</li>';
+  }
+
+  var html1 = "", html2 = "", i;
+  for (i = 0; i < DATA.length; i++) {
+    if (DATA[i].s === 1) html1 += rowHTML(DATA[i]); else html2 += rowHTML(DATA[i]);
+  }
+  document.getElementById("list-1").innerHTML = html1;
+  document.getElementById("list-2").innerHTML = html2;
+
+  /* ── progress ────────────────────────────────────────────────────────── */
+  var elDone = document.getElementById("done"),
+      elFill = document.getElementById("fill"),
+      elBar  = document.getElementById("bar"),
+      elSplit = document.getElementById("split"),
+      elNext = document.getElementById("nextval"),
+      elT1 = document.getElementById("tally-1"),
+      elT2 = document.getElementById("tally-2");
+
+  var TOTAL = DATA.length, T1 = 0, T2 = 0;
+  for (i = 0; i < DATA.length; i++) { if (DATA[i].s === 1) T1++; else T2++; }
+  elT1.textContent = "0/" + T1;
+  elT2.textContent = "0/" + T2;
+
+  function refresh() {
+    var n = 0, c1 = 0, c2 = 0, next = null, d;
+    for (i = 0; i < DATA.length; i++) {
+      d = DATA[i];
+      if (watched[d.n]) { n++; if (d.s === 1) c1++; else c2++; }
+      else if (!next) next = d;
+    }
+    elDone.textContent = n;
+    elFill.style.width = (n / TOTAL * 100) + "%";
+    elBar.setAttribute("aria-valuenow", n);
+    elSplit.textContent = "Infinity " + c1 + "/" + T1 + " · Multiverse " + c2 + "/" + T2;
+    elT1.textContent = c1 + "/" + T1;
+    elT2.textContent = c2 + "/" + T2;
+    elNext.innerHTML = next
+      ? esc(next.t) + ' <span>' + esc(next.y) + '</span>'
+      : "All 47 done — you are ready for Doomsday.";
+  }
+
+  /* ── interaction ─────────────────────────────────────────────────────── */
+  function onChange(e) {
+    var cb = e.target;
+    if (!cb || cb.type !== "checkbox") return;
+    var li = cb.parentNode.parentNode.parentNode, n = +li.getAttribute("data-n");
+    if (cb.checked) watched[n] = true; else delete watched[n];
+    if (cb.checked) li.className = "row done"; else li.className = "row";
+    if (li.getAttribute("data-open") === "1") li.className += " open";
+    save();
+    refresh();
+  }
+
+  function onClick(e) {
+    var el = e.target;
+    while (el && el !== this && el.className !== "row-btn") el = el.parentNode;
+    if (!el || el === this) return;
+    var li = el.parentNode.parentNode, open = li.getAttribute("data-open") === "1";
+    li.setAttribute("data-open", open ? "0" : "1");
+    li.className = "row" + (watched[+li.getAttribute("data-n")] ? " done" : "") + (open ? "" : " open");
+    el.setAttribute("aria-expanded", open ? "false" : "true");
+  }
+
+  var lists = [document.getElementById("list-1"), document.getElementById("list-2")];
+  for (i = 0; i < lists.length; i++) {
+    lists[i].addEventListener("change", onChange, false);
+    lists[i].addEventListener("click", onClick, false);
+  }
+
+  document.getElementById("reset").addEventListener("click", function () {
+    if (!window.confirm("Clear all watched titles? This cannot be undone.")) return;
+    watched = {};
+    save();
+    var boxes = document.querySelectorAll(".row input[type=checkbox]");
+    for (var j = 0; j < boxes.length; j++) {
+      boxes[j].checked = false;
+      var li = boxes[j].parentNode.parentNode.parentNode;
+      li.className = "row" + (li.getAttribute("data-open") === "1" ? " open" : "");
+    }
+    refresh();
+  }, false);
+
+  /* ── theme ───────────────────────────────────────────────────────────── */
+  var MODES = ["auto", "light", "dark"], elTheme = document.getElementById("theme");
+  function applyTheme(m) {
+    if (m === "auto") document.documentElement.removeAttribute("data-theme");
+    else document.documentElement.setAttribute("data-theme", m);
+    elTheme.textContent = m.charAt(0).toUpperCase() + m.slice(1);
+  }
+  var mode = store.get(THEME_KEY);
+  if (MODES.indexOf(mode) < 0) mode = "auto";
+  applyTheme(mode);
+  elTheme.addEventListener("click", function () {
+    mode = MODES[(MODES.indexOf(mode) + 1) % MODES.length];
+    store.set(THEME_KEY, mode);
+    applyTheme(mode);
+  }, false);
+
+  /* ── storage warning ─────────────────────────────────────────────────── */
+  if (store.kind !== "local") {
+    var note = document.getElementById("notice");
+    note.textContent = store.kind === "session"
+      ? "Heads up: this browser is only keeping your progress until you close the tab. On iPhone, tap Share → Add to Home Screen and use that icon — progress sticks properly there."
+      : "Heads up: this browser is blocking saved data, so your progress will disappear on reload. On iPhone, open the file in Safari, then tap Share → Add to Home Screen and use that icon instead.";
+    note.hidden = false;
+    document.getElementById("colophon").textContent =
+      "Tap any row to read why it matters and how it connects.";
+  }
+
+  refresh();
+})();
+</script>
+</body>
+</html>

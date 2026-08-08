@@ -1,0 +1,36 @@
+name: mcu_tracker
+description: "Personal MCU watch tracker — all 47 entries in release order."
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+  # On-device persistence. Backed by NSUserDefaults on iOS, so watched titles
+  # survive app restarts, updates, and reboots.
+  shared_preferences: ^2.3.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+  # Generates every iOS icon size from a single 1024px source.
+  # Run after changing the icon:  dart run flutter_launcher_icons
+  flutter_launcher_icons: ^0.14.1
+
+flutter:
+  uses-material-design: true
+
+flutter_launcher_icons:
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/icon/app_icon.png"

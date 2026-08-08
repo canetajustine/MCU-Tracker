@@ -1,0 +1,53 @@
+name: Build iOS (unsigned)
+
+# GitHub's macOS runners are the reason this exists: iOS binaries can only be
+# compiled on macOS, and there is no Mac in this project. Runs free on public
+# repositories. The artifact is UNSIGNED — sign and install it with AltStore,
+# SideStore, or Sideloadly using a free Apple ID.
+
+on:
+  workflow_dispatch: # run it manually from the Actions tab
+  push:
+    branches: [main]
+    paths:
+      - 'mcu_tracker/**'
+      - '.github/workflows/ios.yml'
+
+jobs:
+  build:
+    runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: mcu_tracker
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: true
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test
+
+      - name: Build unsigned app
+        run: flutter build ios --release --no-codesign
+
+      - name: Package as .ipa
+        run: |
+          mkdir -p build/Payload
+          cp -R build/ios/iphoneos/Runner.app build/Payload/
+          cd build && zip -qry mcu_tracker.ipa Payload
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: mcu-tracker-ipa
+          path: mcu_tracker/build/mcu_tracker.ipa
+          if-no-files-found: error
