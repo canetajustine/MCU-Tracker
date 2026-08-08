@@ -1,0 +1,10 @@
+# Flutter / Dart
+mcu_tracker/.dart_tool/
+mcu_tracker/build/
+mcu_tracker/.flutter-plugins-dependencies
+mcu_tracker/.idea/
+mcu_tracker/*.iml
+
+# Local tooling
+.claude/
+__pycache__/
