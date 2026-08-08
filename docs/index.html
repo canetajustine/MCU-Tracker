@@ -130,6 +130,10 @@
     align-items:center; justify-content:center; padding:22px;
     background:var(--bg);
   }
+  /* Must come after the rule above: an author `display` beats the browser's
+     built-in [hidden]{display:none}, so without this the overlay never goes
+     away no matter what the hidden property says. */
+  .gate[hidden]{display:none}
   .gate-card{
     width:100%; max-width:380px; background:var(--panel);
     border:2px solid var(--ink); padding:22px 20px 20px;
