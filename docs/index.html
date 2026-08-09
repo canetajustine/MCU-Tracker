@@ -238,7 +238,12 @@
     font-size:13.5px; font-weight:650;
     white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
   }
-  .nextup span i{font-style:normal; color:var(--muted); font-variant-numeric:tabular-nums}
+  /* margin, not a space: this is a flex container, and whitespace between
+     flex items is discarded, so "Iron Man 2008" renders as "Iron Man2008". */
+  .nextup span i{
+    margin-left:7px; font-style:normal; color:var(--muted);
+    font-variant-numeric:tabular-nums;
+  }
 
   .notice{
     font-size:12px; line-height:1.45; color:var(--ink);
@@ -394,8 +399,12 @@
 </head>
 <body>
 
-<div class="gate" id="gate" hidden>
-  <form class="gate-card" id="gate-form">
+<!-- Starts hidden by an inline style and is only ever shown by script. If the
+     script fails for any reason, you get the list rather than a stuck overlay.
+     Not a <form>: a submit can navigate the page out from under a standalone
+     home-screen app. -->
+<div class="gate" id="gate" style="display:none">
+  <div class="gate-card" id="gate-form">
     <p class="eyebrow">Before we begin</p>
     <h2>What should we call you?</h2>
     <input id="name-input" type="text" maxlength="24" autocomplete="given-name"
@@ -408,10 +417,10 @@
     </div>
 
     <div class="gate-actions">
-      <button type="submit" class="gate-go" id="gate-go">Start tracking</button>
+      <button type="button" class="gate-go" id="gate-go">Start tracking</button>
       <button type="button" class="gate-skip" id="gate-skip">Skip</button>
     </div>
-  </form>
+  </div>
 </div>
 
 <header class="halftone">
@@ -476,6 +485,7 @@
   </ul>
   <p class="colophon" id="colophon">Progress is saved on this device only &mdash; checking a title here won&rsquo;t appear on your other devices. Tap any row to read why it matters and how it connects. Tap a colour circle to switch themes.</p>
   <p class="colophon" id="persist"></p>
+  <p class="colophon" id="build">Build 7</p>
   <p class="colophon"><button class="reset" id="reset" type="button">Reset progress</button></p>
 </footer>
 
@@ -699,49 +709,77 @@
   /* Asked once, kept on the device. Skipping is allowed — an empty string is a
      real answer ("no name"), distinct from null ("never asked"). */
   var elGate = document.getElementById("gate"),
-      elGateForm = document.getElementById("gate-form"),
       elNameInput = document.getElementById("name-input"),
       elGreeting = document.getElementById("greeting");
 
   var savedName = store.get(NAME_KEY);
 
+  /* A couple of names get a different greeting. The typed name is still what
+     gets stored, so reopening the prompt shows what they actually entered. */
+  var ENDEARED = ["kyra", "aya"];
+
+  function greetingFor(name) {
+    if (!name) return "Marvel Studios · Release Order";
+    var key = name.toLowerCase();
+    for (var g = 0; g < ENDEARED.length; g++) {
+      if (key === ENDEARED[g]) return "Hi, My Baby!";
+    }
+    return "Hi, " + name + "!";
+  }
+
   function showGreeting(name) {
     // textContent, never innerHTML — the name is user input.
-    elGreeting.textContent = name ? "Hi, " + name + "!" : "Marvel Studios · Release Order";
+    elGreeting.textContent = greetingFor(name);
     elGreeting.setAttribute("title", name ? "Change your name" : "Add your name");
   }
 
   function openGate() {
+    // closeGate detaches it, so put it back before showing it again.
+    if (!elGate.parentNode) document.body.appendChild(elGate);
     elNameInput.value = savedName || "";
-    elGate.hidden = false;
+    elGate.style.display = "flex";
+    elGate.removeAttribute("hidden");
     try { elNameInput.focus(); } catch (e) {}
   }
 
+  /* Close first, persist second. Nothing that could throw is allowed to run
+     before the overlay is gone — being unable to save a name is survivable,
+     being trapped behind an overlay is not. */
   function closeGate(name) {
-    savedName = name;
-    store.set(NAME_KEY, name);
-    showGreeting(name);
-    elGate.hidden = true;
+    elGate.style.display = "none";
+    elGate.setAttribute("hidden", "hidden");
+    if (elGate.parentNode) elGate.parentNode.removeChild(elGate);
+    try {
+      savedName = name;
+      store.set(NAME_KEY, name);
+      showGreeting(name);
+    } catch (e) {}
   }
 
   function commitName() {
     closeGate(elNameInput.value.replace(/\s+/g, " ").trim());
   }
 
-  /* Three ways in, because a sandboxed frame can swallow form submission
-     entirely and leave the button dead. Running twice is harmless. */
-  elGateForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    commitName();
-  }, false);
+  /* Four independent ways out. If any single one fails on a given browser the
+     others still work, and none of them depends on form submission. */
+  function bindOut(el, handler, alsoTouch) {
+    if (!el) return;
+    el.addEventListener("click", handler, false);
+    if (alsoTouch) el.addEventListener("touchend", handler, false);
+  }
 
-  document.getElementById("gate-go").addEventListener("click", function (e) {
-    e.preventDefault();
+  bindOut(document.getElementById("gate-go"), function (e) {
+    if (e) e.preventDefault();
     commitName();
-  }, false);
+  }, true);
 
   elNameInput.addEventListener("keydown", function (e) {
     if (e.key === "Enter" || e.keyCode === 13) { e.preventDefault(); commitName(); }
+  }, false);
+
+  // Tapping the backdrop counts as accepting whatever is typed.
+  elGate.addEventListener("click", function (e) {
+    if (e.target === elGate) commitName();
   }, false);
 
   document.getElementById("gate-skip").addEventListener("click", function () {
