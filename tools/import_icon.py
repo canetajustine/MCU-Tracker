@@ -24,6 +24,12 @@ from PIL import Image, ImageChops, ImageDraw
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PNG_DST = os.path.join(ROOT, "mcu_tracker", "assets", "icon", "app_icon.png")
 HTML_DST = os.path.join(ROOT, "mcu-tracker.html")
+DOCS = os.path.join(ROOT, "docs")
+
+# Android crops a "maskable" icon to a circle or squircle and only guarantees
+# the inner 80%. This artwork runs to the edges, so the eyes would lose their
+# tips — the maskable copy gets padding to keep them inside the safe zone.
+MASKABLE_SCALE = 0.62
 
 # Generous: the seed is white, and the artwork's dark navy is ~200 away from
 # it, so a high threshold eats the JPEG halo without touching the badge.
@@ -102,6 +108,19 @@ def main():
     os.makedirs(os.path.dirname(PNG_DST), exist_ok=True)
     im.resize((1024, 1024), Image.LANCZOS).save(PNG_DST, "PNG")
 
+    # Android / Chrome reads these from the manifest.
+    os.makedirs(DOCS, exist_ok=True)
+    for size in (192, 512):
+        im.resize((size, size), Image.LANCZOS).save(
+            os.path.join(DOCS, "icon-%d.png" % size), "PNG"
+        )
+
+    maskable = Image.new("RGB", (512, 512), colour)
+    inner = int(round(512 * MASKABLE_SCALE))
+    offset = (512 - inner) // 2
+    maskable.paste(im.resize((inner, inner), Image.LANCZOS), (offset, offset))
+    maskable.save(os.path.join(DOCS, "icon-maskable-512.png"), "PNG")
+
     buf = io.BytesIO()
     im.resize((180, 180), Image.LANCZOS).save(buf, "PNG")
     uri = "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
@@ -120,6 +139,7 @@ def main():
     print("source      : %s %sx%s" % (os.path.basename(src_path), original[0], original[1]))
     print("trimmed to  : %sx%s, badge colour #%02X%02X%02X" % (im.size + colour))
     print("wrote       : %s (1024px)" % os.path.relpath(PNG_DST, ROOT))
+    print("wrote       : docs/icon-192.png, docs/icon-512.png, docs/icon-maskable-512.png")
     print("patched     : mcu-tracker.html (180px, %d bytes)" % len(buf.getvalue()))
 
 

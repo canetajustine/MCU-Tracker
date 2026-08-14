@@ -1,0 +1,16 @@
+{
+  "name": "MCU Watch Tracker",
+  "short_name": "MCU Tracker",
+  "description": "All 47 MCU entries in release order, ticked off as you watch.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1D2D3A",
+  "theme_color": "#1D2D3A",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

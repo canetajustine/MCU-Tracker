@@ -28,6 +28,29 @@ BANNER = (
     "     Edit ../mcu-tracker.html, then run: python tools/build_site.py -->\n"
 )
 
+# Android decides whether to offer a real installed app (own icon, no address
+# bar) based on this. iOS ignores it and uses the meta tags instead. It only
+# goes into the hosted copy — mcu-tracker.html stays a single portable file.
+MANIFEST = """{
+  "name": "MCU Watch Tracker",
+  "short_name": "MCU Tracker",
+  "description": "All 47 MCU entries in release order, ticked off as you watch.",
+  "start_url": ".",
+  "scope": ".",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#1D2D3A",
+  "theme_color": "#1D2D3A",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
+"""
+
+MANIFEST_LINK = '<link rel="manifest" href="manifest.webmanifest">\n'
+
 
 def digest(text):
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
@@ -35,6 +58,12 @@ def digest(text):
 
 def render():
     source = open(SRC, encoding="utf-8").read()
+
+    # The hosted copy gets a manifest link; the portable file does not.
+    anchor = '<link rel="apple-touch-icon"'
+    if MANIFEST_LINK.strip() not in source and anchor in source:
+        source = source.replace(anchor, MANIFEST_LINK + anchor, 1)
+
     # Slip the banner in after the doctype so it is the first thing anyone sees.
     marker = "<!doctype html>\n"
     if source.startswith(marker):
@@ -65,6 +94,9 @@ def main():
         fh.write(output)
     with open(HASH_FILE, "w", encoding="utf-8") as fh:
         fh.write(digest(output))
+
+    with open(os.path.join(OUT_DIR, "manifest.webmanifest"), "w", encoding="utf-8") as fh:
+        fh.write(MANIFEST)
 
     # Pages runs Jekyll by default, which ignores files it considers special.
     open(os.path.join(OUT_DIR, ".nojekyll"), "w").close()
